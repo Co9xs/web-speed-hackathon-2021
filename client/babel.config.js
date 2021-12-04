@@ -1,18 +1,21 @@
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        corejs: '3',
-        modules: 'commonjs',
-        useBuiltIns: false,
+        corejs: '3.19',
+        modules: 'auto',
+        useBuiltIns: 'usage',
+        targets: 'last 1 Chrome major version'
       },
     ],
     [
-      '@babel/preset-react',
+      "@babel/preset-react",
       {
-        development: true,
-      },
-    ],
-  ],
+        throwIfNamespace: false,
+        runtime: 'automatic',
+        development: process.env.NODE_ENV
+      }
+    ]
+  ]
 };
