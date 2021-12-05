@@ -1,4 +1,5 @@
 import { gzip } from 'pako';
+import jquery from 'jquery';
 
 /**
  * @param {string} url
@@ -19,15 +20,20 @@ async function fetchBinary(url) {
  * @param {string} url
  * @returns {Promise<T>}
  */
-async function fetchJSON(url) {
-  const res = await fetch(url, {
+ async function fetchJSON(url) {
+  const result = await jquery.ajax({
+    dataType: 'json',
     method: 'GET',
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-  return await res.json();
+    url,
+  });
+  return result;
 }
+// async function fetchJSON(url) {
+//   const res = await fetch(url, {
+//     method: 'GET'
+//   })
+//   return await res.json();
+// }
 
 /**
  * @template T
