@@ -1,7 +1,6 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
@@ -56,7 +55,6 @@ const config = {
     path: DIST_PATH,
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       AudioContext: ['standardized-audio-context', 'AudioContext'],
