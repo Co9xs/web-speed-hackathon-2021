@@ -40,10 +40,11 @@ const config = {
         use: [{ loader: 'babel-loader' }],
       },
       {
+        exclude: /node_modules/,
         test: /\.css$/i,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { url: false } },
+          { loader: 'css-loader' },
           { loader: 'postcss-loader' },
         ],
       },
