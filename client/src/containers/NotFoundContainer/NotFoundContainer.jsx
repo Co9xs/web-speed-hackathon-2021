@@ -1,15 +1,16 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect } from 'react';
 
 import { NotFoundPage } from '../../components/application/NotFoundPage';
 
 /** @type {React.VFC} */
 const NotFoundContainer = () => {
+
+  useEffect(() => {
+    window.title = 'ページが見つかりません - CAwitter';
+  }, [])
+
   return (
     <>
-      <Helmet>
-        <title>ページが見つかりません - CAwitter</title>
-      </Helmet>
       <NotFoundPage />
     </>
   );
