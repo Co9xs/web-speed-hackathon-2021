@@ -14,7 +14,8 @@ router.get('/me', async (req, res) => {
   if (user === null) {
     throw new httpErrors.NotFound();
   }
-
+  // fetch APIに置き換えたので以下のヘッダーを設定
+  res.setHeader('Access-Control-Allow-Credentials', true)
   return res.status(200).type('application/json').send(user);
 });
 
