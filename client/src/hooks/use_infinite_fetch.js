@@ -41,10 +41,8 @@ export function useInfiniteFetch(apiPath, fetcher) {
       offset,
     };
 
-    const promise = fetcher(apiPath);
-
-    promise.then((allData) => {
-      setResult((cur) => ({
+    fetcher(apiPath).then(allData => {
+      setResult(cur => ({
         ...cur,
         data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
         isLoading: false,
@@ -53,10 +51,8 @@ export function useInfiniteFetch(apiPath, fetcher) {
         isLoading: false,
         offset: offset + LIMIT,
       };
-    });
-
-    promise.catch((error) => {
-      setResult((cur) => ({
+    }).catch(error => {
+      setResult(cur => ({
         ...cur,
         error,
         isLoading: false,

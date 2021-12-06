@@ -20,7 +20,9 @@ const PostContainer = () => {
     if (isLoadingPost) {
       document.title = '読込中 - CAwitter';
     }
-    document.title = `${post.user.name} さんのつぶやき - CAwitter`;
+    if (post) {
+      document.title = `${post.user.name} さんのつぶやき - CAwitter`;
+    }
   }, [isLoadingPost, post])
 
   if (post === null) {

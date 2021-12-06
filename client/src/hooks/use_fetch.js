@@ -28,18 +28,14 @@ export function useFetch(apiPath, fetcher) {
       isLoading: true,
     }));
 
-    const promise = fetcher(apiPath);
-
-    promise.then((data) => {
-      setResult((cur) => ({
+    fetcher(apiPath).then(data => {
+      setResult(cur => ({
         ...cur,
         data,
         isLoading: false,
       }));
-    });
-
-    promise.catch((error) => {
-      setResult((cur) => ({
+    }).catch(error => {
+      setResult(cur => ({
         ...cur,
         error,
         isLoading: false,

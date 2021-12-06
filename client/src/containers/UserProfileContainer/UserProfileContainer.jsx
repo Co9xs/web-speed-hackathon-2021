@@ -19,7 +19,9 @@ const UserProfileContainer = () => {
     if (isLoadingUser) {
       document.title = '読込中 - CAwitter';
     }
-    document.title = `${user.name} さんのタイムライン - CAwitter`
+    if (user) {
+      document.title = `${user.name} さんのタイムライン - CAwitter`
+    }
   }, [isLoadingUser, user])
 
   if (user === null) {
