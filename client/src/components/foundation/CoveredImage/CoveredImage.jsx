@@ -51,6 +51,8 @@ const CoveredImage = ({ alt, src, lazy }) => {
           'w-auto h-full': containerRatio > imageRatio,
           'w-full h-auto': containerRatio <= imageRatio,
         })}
+        width={containerSize.width}
+        height={containerSize.height}
         src={blobUrl}
         loading={lazy ? 'lazy' : undefined}
       />
