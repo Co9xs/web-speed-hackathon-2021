@@ -1,4 +1,5 @@
 {
+  "module": "esnext",
   "private": true,
   "name": "@web-speed-hackathon-2021/server",
   "version": "0.0.1",
