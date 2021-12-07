@@ -7,6 +7,7 @@
     "analyze": "cross-env NODE_ENV=production webpack --analyze",
     "prebuild": "rimraf ../dist",
     "build": "cross-env NODE_ENV=production webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack",
     "develop": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
