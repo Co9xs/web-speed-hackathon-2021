@@ -77,6 +77,9 @@ const config = {
       fs: false,
       path: false,
     },
+    alias: {
+      bluebird: path.resolve(SRC_PATH, './alias/promise.js'),
+    }
   },
   optimization: {
     minimize: true,
