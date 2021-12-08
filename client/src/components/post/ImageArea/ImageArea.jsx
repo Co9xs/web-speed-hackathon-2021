@@ -3,7 +3,6 @@ import React from 'react';
 
 import { getImagePath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../../foundation/AspectRatioBox';
-import { CoveredImage } from '../../foundation/CoveredImage';
 
 /**
  * @typedef {object} Props
@@ -27,7 +26,12 @@ const ImageArea = ({ images }) => {
                 'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
               })}
             >
-              <CoveredImage alt={image.alt} src={getImagePath(image.id)} lazy={true} />
+              <img 
+                src={getImagePath(image.id)}
+                alt={image.alt}
+                className='w-full h-full object-cover'
+                loading='lazy'
+              />
             </div>
           );
         })}
