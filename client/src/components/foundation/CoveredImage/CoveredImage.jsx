@@ -2,6 +2,9 @@ import classNames from 'classnames';
 import sizeOf from 'image-size';
 import React from 'react';
 
+import { useFetch } from '../../../hooks/use_fetch';
+import { fetchBinary } from '../../../utils/fetchers';
+
 /**
  * @typedef {object} Props
  * @property {string} alt
@@ -14,8 +17,14 @@ import React from 'react';
  * @type {React.VFC<Props>}
  */
 const CoveredImage = ({ alt, src, lazy }) => {
+  const { data, isLoading } = useFetch(src, fetchBinary);
+
   const imageSize = React.useMemo(() => {
     return data !== null ? sizeOf(Buffer.from(data)) : null;
+  }, [data]);
+
+  const blobUrl = React.useMemo(() => {
+    return data !== null ? URL.createObjectURL(new Blob([data])) : null;
   }, [data]);
 
   const [containerSize, setContainerSize] = React.useState({ height: 0, width: 0 });
@@ -26,6 +35,10 @@ const CoveredImage = ({ alt, src, lazy }) => {
       width: el?.clientWidth ?? 0,
     });
   }, []);
+
+  if (isLoading || data === null || blobUrl === null) {
+    return null;
+  }
 
   const containerRatio = containerSize.height / containerSize.width;
   const imageRatio = imageSize?.height / imageSize?.width;
@@ -40,7 +53,7 @@ const CoveredImage = ({ alt, src, lazy }) => {
         })}
         width={containerSize.width}
         height={containerSize.height}
-        src={src}
+        src={blobUrl}
         loading={lazy ? 'lazy' : undefined}
       />
     </div>
