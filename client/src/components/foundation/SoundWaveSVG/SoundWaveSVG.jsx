@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { zip, mean, chunk } from '../../../utils/utilFunc';
 
 /**
@@ -28,9 +28,9 @@ import { zip, mean, chunk } from '../../../utils/utilFunc';
  * @type {React.VFC<Props>}
  */
 const SoundWaveSVG = ({ soundData }) => {
-  const [{ max, peaks }, setPeaks] = React.useState({ max: 0, peaks: [] });
+  const [{ max, peaks }, setPeaks] = useState({ max: 0, peaks: [] });
 
-  React.useEffect(() => {
+  useEffect(() => {
     calculate(soundData).then(({ max, peaks }) => {
       setPeaks({ max, peaks });
     });

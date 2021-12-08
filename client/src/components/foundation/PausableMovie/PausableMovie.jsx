@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
 import { classNames } from '../../../utils/classnames';
@@ -14,11 +14,11 @@ import { classNames } from '../../../utils/classnames';
  */
 const PausableMovie = ({ src }) => {
   /** @type {React.RefObject<HTMLVideoElement>} */
-  const videoRef = React.useRef(null);
+  const videoRef = useRef(null);
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const [isPlaying, setIsPlaying] = React.useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (prefersReducedMotion) {
       setIsPlaying(false);
       videoRef.current?.pause();
@@ -28,7 +28,7 @@ const PausableMovie = ({ src }) => {
     }
   }, [prefersReducedMotion, videoRef])
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     setIsPlaying((isPlaying) => {
       if (isPlaying) {
         videoRef.current?.pause();

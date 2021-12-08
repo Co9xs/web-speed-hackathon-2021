@@ -1,4 +1,3 @@
-import React from 'react';
 import { classNames } from '../../../utils/classnames';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
