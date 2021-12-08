@@ -1,10 +1,12 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -67,9 +69,15 @@ const config = {
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[hash].css',
     }),
+    new RemoveEmptyScriptsPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(SRC_PATH, './index.html'),
-      publicPath: '/'
+      publicPath: '/',
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'all',
+      fileBlacklist: [/\.js/]
     }),
   ],
   resolve: {
