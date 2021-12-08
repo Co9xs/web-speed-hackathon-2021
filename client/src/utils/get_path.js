@@ -20,7 +20,8 @@ function getImagePath(imageId) {
  * @returns {string}
  */
 function getMoviePath(movieId) {
-  return `/movies/${movieId}.gif`;
+  const movieUrl = cloudinary.video(`hackathon-2021/movies/${movieId}`).toURL()
+  return movieUrl;
 }
 
 /**
