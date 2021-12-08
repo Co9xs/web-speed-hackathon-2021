@@ -24,8 +24,9 @@ const config = {
   },
   devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
   entry: {
+    style: path.resolve(SRC_PATH, './index.css'),
+    webfont: path.resolve(SRC_PATH, './webfont.css'),
     main: [
-      path.resolve(SRC_PATH, './index.css'),
       path.resolve(SRC_PATH, './buildinfo.js'),
       path.resolve(SRC_PATH, './index.jsx'),
     ],
@@ -50,7 +51,7 @@ const config = {
     ],
   },
   output: {
-    filename: 'scripts/[name].js',
+    filename: 'scripts/[name].[hash].js',
     path: DIST_PATH,
   },
   plugins: [
@@ -61,14 +62,14 @@ const config = {
       BUILD_DATE: new Date().toISOString(),
       // Heroku では SOURCE_VERSION 環境変数から commit hash を参照できます
       COMMIT_HASH: process.env.SOURCE_VERSION || '',
-      NODE_ENV: 'development',
+      NODE_ENV: process.env.NODE_ENV,
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
+      filename: 'styles/[name].[hash].css',
     }),
     new HtmlWebpackPlugin({
-      inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
+      publicPath: '/'
     }),
   ],
   resolve: {
