@@ -6,8 +6,8 @@ const convertToAvif = async (buffer) => {
 	return sharp(buffer).avif({speed: 9}).toBuffer();
 }
 
-(async () => {
-	const imagePaths = await globby("../public/images/**/*.jpg");
+const main = async () => {
+	const imagePaths = await globby("../../../../public/images/**/*.jpg");
 	for (const path of imagePaths) {
 		const buffer = await fs.readFile(path);
 		const converted = await convertToAvif(buffer);
@@ -16,4 +16,6 @@ const convertToAvif = async (buffer) => {
 		await fs.rename(path, newPath)
 		console.log(newPath, `convert completed`)
 	}
-})();
+}
+
+main();
