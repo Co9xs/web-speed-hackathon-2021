@@ -38,7 +38,6 @@ const ImageArea = ({ images }) => {
                   src={getImagePath(image.id)}
                   alt={image.alt}
                   className='w-full h-full object-cover'
-                  loading='lazy'
                 />
               ): null}
             </div>

@@ -28,7 +28,7 @@ const PostItem = ({ post }) => {
               to={`/users/${post.user.username}`}
             >
               {inView ? (
-                <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading='lazy' />
+                <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} />
               ) : null}
             </Link>
           </div>
