@@ -1,9 +1,18 @@
+import { Cloudinary } from '@cloudinary/url-gen';
+
+const cloudinary = new Cloudinary({
+  cloud: {
+    cloudName: 'fujishima'
+  }
+})
+
 /**
  * @param {string} imageId
  * @returns {string}
  */
 function getImagePath(imageId) {
-  return `/images/${imageId}.webp`;
+  const imageUrl = cloudinary.image(`hackathon-2021/images/${imageId}`).format("avif").toURL();
+  return imageUrl;
 }
 
 /**
@@ -27,7 +36,8 @@ function getSoundPath(soundId) {
  * @returns {string}
  */
 function getProfileImagePath(profileImageId) {
-  return `/images/profiles/${profileImageId}.webp`;
+  const imageUrl = cloudinary.image(`hackathon-2021/images/profiles/${profileImageId}`).format("avif").toURL();
+  return imageUrl;
 }
 
 export { getImagePath, getMoviePath, getSoundPath, getProfileImagePath };
