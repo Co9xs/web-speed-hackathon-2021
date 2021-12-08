@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React from 'react';
+import { classNames } from '../../../utils/classnames';
 
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 /** @type {React.VFC<Props>} */
 const ModalErrorMessage = ({ children }) => {
   return (
-    <span className={classNames('block h-6 text-red-600', { invisible: !children })}>
+    <span className={classNames('block h-6 text-red-600', !children ? 'invisible' : null)}>
       <span className="mr-1">
         <FontAwesomeIcon iconType="exclamation-circle" styleType="solid" />
       </span>

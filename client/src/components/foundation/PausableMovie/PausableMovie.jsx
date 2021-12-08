@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import React from 'react';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
+import { classNames } from '../../../utils/classnames';
 
 /**
  * @typedef {object} Props
@@ -54,9 +54,7 @@ const PausableMovie = ({ src }) => {
         <div
           className={classNames(
             'absolute left-1/2 top-1/2 flex items-center justify-center w-16 h-16 text-white text-3xl bg-black bg-opacity-50 rounded-full transform -translate-x-1/2 -translate-y-1/2',
-            {
-              'opacity-0 group-hover:opacity-100': isPlaying,
-            },
+            isPlaying ? 'opacity-0 group-hover:opacity-100' : null
           )}
         >
           <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="solid" />
