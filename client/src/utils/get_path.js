@@ -11,7 +11,7 @@ const cloudinary = new Cloudinary({
  * @returns {string}
  */
 function getImagePath(imageId) {
-  const imageUrl = cloudinary.image(`hackathon-2021/images/${imageId}`).format("avif").toURL();
+  const imageUrl = cloudinary.image(`hackathon-2021/images/${imageId}`).toURL();
   return imageUrl;
 }
 
@@ -36,7 +36,7 @@ function getSoundPath(soundId) {
  * @returns {string}
  */
 function getProfileImagePath(profileImageId) {
-  const imageUrl = cloudinary.image(`hackathon-2021/images/profiles/${profileImageId}`).format("avif").toURL();
+  const imageUrl = cloudinary.image(`hackathon-2021/images/profiles/${profileImageId}`).toURL();
   return imageUrl;
 }
 
