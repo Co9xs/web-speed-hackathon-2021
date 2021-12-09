@@ -4,16 +4,16 @@ import ffmpeg from 'fluent-ffmpeg';
 /**
  * @returns {void}
  */
-const convertMovie = async () => {
-  const moviePaths = await globby(`../../../../public/movies/*.gif`);
+const convertMovie = async (from, to) => {
+  const moviePaths = await globby(`../../../../public/movies/*.${from}`);
   for (const path of moviePaths) {
-    const newPath = path.replace('.gif', '.webm');
+    const newPath = path.replace(`.${from}`, `.${to}`);
     ffmpeg(path)
-    .toFormat('webm')
+    .toFormat(to)
     .on('end', () => {
       console.log(newPath, 'convert completed');
     }).save(newPath)
   }
 }
 
-convertMovie();
+convertMovie("mp4", "webm");

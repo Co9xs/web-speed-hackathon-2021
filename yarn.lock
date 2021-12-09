@@ -967,11 +967,6 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@cloudinary/url-gen@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.3.0.tgz#2c9281b3607f5c1b6e1f398caaeb51dcc8f6e331"
-  integrity sha512-EHAEusjsbEzgPy6zxCueYXTMiALlgkcEcZqVojiT7BzsgOSOkT8HyJYfc1yuY5lm4H1OSAh7k+ONRZUiSIW8HQ==
-
 "@csstools/convert-colors@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-2.0.0.tgz#6dd323583b40cfe05aaaca30debbb30f26742bbf"
@@ -1176,11 +1171,6 @@
   version "2019.6.4"
   resolved "https://registry.yarnpkg.com/@types/offscreencanvas/-/offscreencanvas-2019.6.4.tgz#64f6d120b53925028299c744fcdd32d2cd525963"
   integrity sha512-u8SAgdZ8ROtkTF+mfZGOscl0or6BSj9A4g37e6nvxDc+YB/oDut0wHkK2PBBiC2bNR8TS0CPV+1gAk4fNisr1Q==
-
-"@types/pako@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/pako/-/pako-1.0.2.tgz#17c9b136877f33d9ecc8e73cd26944f1f6dd39a1"
-  integrity sha512-8UJl2MjkqqS6ncpLZqRZ5LmGiFBkbYxocD4e4jmBqGvfRG1RS23gKsBQbdtV9O9GvRyjFTiRHRByjSlKCLlmZw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
