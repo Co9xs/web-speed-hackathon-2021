@@ -12,7 +12,7 @@ const ModalErrorMessage = ({ children }) => {
   return (
     <span className={classNames('block h-6 text-red-600', !children ? 'invisible' : null)}>
       <span className="mr-1">
-        <FontAwesomeIcon iconType="exclamation-circle" styleType="solid" />
+        <FontAwesomeIcon iconType="exclamation-circle" styleType="icon" />
       </span>
       {children}
     </span>

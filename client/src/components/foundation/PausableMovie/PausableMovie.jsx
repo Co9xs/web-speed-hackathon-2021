@@ -57,7 +57,7 @@ const PausableMovie = ({ src }) => {
             isPlaying ? 'opacity-0 group-hover:opacity-100' : null
           )}
         >
-          <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="solid" />
+          <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="icon" />
         </div>
       </button>
     </AspectRatioBox>
