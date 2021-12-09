@@ -46,7 +46,6 @@ const PausableMovie = ({ src }) => {
           ref={videoRef}
           muted
           src={src}
-          autoPlay={prefersReducedMotion}
           loop
           playsInline
           className="w-full"

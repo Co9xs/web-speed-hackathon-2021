@@ -16,4 +16,4 @@ const convertMovie = async (from, to) => {
   }
 }
 
-convertMovie("mp4", "webm");
+convertMovie("webm", "mp4");
