@@ -2,7 +2,7 @@ import FastAverageColor from 'fast-average-color';
 import { useState, useCallback } from 'react';
 
 import { getProfileImagePath } from '../../../utils/get_path';
-import { formatDate } from '../../../utils/utilFunc';
+import { formatDate } from '../../../utils/util_func';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
 /**

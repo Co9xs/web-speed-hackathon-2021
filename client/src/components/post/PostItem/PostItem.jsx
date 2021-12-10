@@ -2,7 +2,7 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 
 import { getProfileImagePath } from '../../../utils/get_path';
-import { formatDate } from '../../../utils/utilFunc';
+import { formatDate } from '../../../utils/util_func';
 import { ImageArea } from '../../post/ImageArea';
 import { MovieArea } from '../../post/MovieArea';
 import { SoundArea } from '../../post/SoundArea';
