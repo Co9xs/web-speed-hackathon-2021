@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import * as React from 'react';
+import { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { AppPage } from '../../components/application/AppPage';
@@ -7,29 +6,29 @@ import { useFetch } from '../../hooks/use_fetch';
 import { fetchJSON } from '../../utils/fetchers';
 import { AuthModalContainer } from '../AuthModalContainer';
 import { NewPostModalContainer } from '../NewPostModalContainer';
-import { NotFoundContainer } from '../NotFoundContainer';
-import { PostContainer } from '../PostContainer';
-import { TermContainer } from '../TermContainer';
-import { TimelineContainer } from '../TimelineContainer';
-import { UserProfileContainer } from '../UserProfileContainer';
+const TimelineContainer = lazy(() => import('../TimelineContainer'))
+const UserProfileContainer = lazy(() => import('../UserProfileContainer'))
+const PostContainer = lazy(() => import('../PostContainer'))
+const TermContainer = lazy(() => import('../TermContainer'))
+const NotFoundContainer = lazy(() => import('../NotFoundContainer'))
 
 /** @type {React.VFC} */
 const AppContainer = () => {
   const { pathname } = useLocation();
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const [activeUser, setActiveUser] = React.useState(null);
+  const [activeUser, setActiveUser] = useState(null);
   const { data, isLoading } = useFetch('/api/v1/me', fetchJSON);
-  React.useEffect(() => {
+  useEffect(() => {
     setActiveUser(data);
   }, [data]);
 
-  const [modalType, setModalType] = React.useState('none');
-  const handleRequestOpenAuthModal = React.useCallback(() => setModalType('auth'), []);
-  const handleRequestOpenPostModal = React.useCallback(() => setModalType('post'), []);
-  const handleRequestCloseModal = React.useCallback(() => setModalType('none'), []);
+  const [modalType, setModalType] = useState('none');
+  const handleRequestOpenAuthModal = useCallback(() => setModalType('auth'), []);
+  const handleRequestOpenPostModal = useCallback(() => setModalType('post'), []);
+  const handleRequestCloseModal = useCallback(() => setModalType('none'), []);
 
   useEffect(() => {
     if (isLoading) {
@@ -45,11 +44,11 @@ const AppContainer = () => {
         onRequestOpenPostModal={handleRequestOpenPostModal}
       >
         <Routes>
-          <Route element={<TimelineContainer />} path="/" />
-          <Route element={<UserProfileContainer />} path="/users/:username" />
-          <Route element={<PostContainer />} path="/posts/:postId" />
-          <Route element={<TermContainer />} path="/terms" />
-          <Route element={<NotFoundContainer />} path="*" />
+          <Route element={<Suspense fallback={null}><TimelineContainer /></Suspense>} path="/" />
+          <Route element={<Suspense fallback={null}><UserProfileContainer /></Suspense>} path="/users/:username" />
+          <Route element={<Suspense fallback={null}><PostContainer /></Suspense>} path="/posts/:postId" />
+          <Route element={<Suspense fallback={null}><TermContainer /></Suspense>} path="/terms" />
+          <Route element={<Suspense fallback={null}><NotFoundContainer /></Suspense>} path="*" />
         </Routes>
       </AppPage>
 
