@@ -87,7 +87,11 @@ const config = {
       path: false,
     },
     alias: {
-      bluebird: path.resolve(SRC_PATH, './alias/promise.js'),
+      'bluebird': path.resolve(SRC_PATH, './alias/promise.js'),
+      'react': "preact/compat",
+      'react-dom/test-utils': "preact/test-utils",
+      'react-dom': "preact/compat",     // Must be below test-utils
+      'react/jsx-runtime': "preact/jsx-runtime"
     }
   },
   optimization: {
