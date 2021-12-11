@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -68,6 +69,9 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[hash].css',
+    }),
+    new HTMLInlineCSSWebpackPlugin({
+      filter: (fileName) => ['index.html', 'webfont'].some(name => fileName.includes(name)),
     }),
     new RemoveEmptyScriptsPlugin(),
     new HtmlWebpackPlugin({
