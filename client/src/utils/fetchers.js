@@ -59,7 +59,6 @@ async function sendJSON(url, data) {
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Encoding': 'gzip',
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },

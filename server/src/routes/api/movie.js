@@ -32,7 +32,6 @@ router.post('/movies', async (req, res) => {
 
   const filePath = path.resolve(UPLOAD_PATH, `./movies/${movieId}.${EXTENSION}`);
   await fs.writeFile(filePath, converted);
-  // TODO: cloudinaryへのアップロード
 
   return res.status(200).type('application/json').send({ id: movieId });
 });

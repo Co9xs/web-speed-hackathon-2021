@@ -34,10 +34,12 @@ router.post('/sounds', async (req, res) => {
 
   const filePath = path.resolve(UPLOAD_PATH, `./sounds/${soundId}.${EXTENSION}`);
   const svgPath = path.resolve(UPLOAD_PATH, `./images/waves/${soundId}.svg`); 
-  const soundWaveSvg = await generateSoundWaveSvg(converted);
+
+  // TODO: fix error in generateSoundWaveSvg 
+  // const soundWaveSvg = await generateSoundWaveSvg(converted);
   await Promise.all([
     fs.writeFile(filePath, converted),
-    fs.writeFile(svgPath, soundWaveSvg)
+    // fs.writeFile(svgPath, soundWaveSvg)
   ])
 
   return res.status(200).type('application/json').send({ artist, id: soundId, title });
