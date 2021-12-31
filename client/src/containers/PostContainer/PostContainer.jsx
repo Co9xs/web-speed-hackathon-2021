@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { PostPage } from '../../components/post/PostPage';
@@ -16,14 +16,13 @@ const PostContainer = () => {
 
   const { data: comments, fetchMore } = useInfiniteFetch(`/api/v1/posts/${postId}/comments`, fetchJSON);
 
-  useEffect(() => {
-    if (isLoadingPost) {
-      document.title = '読込中 - CAwitter';
-    }
-    if (post) {
-      document.title = `${post.user.name} さんのつぶやき - CAwitter`;
-    }
-  }, [isLoadingPost, post])
+  if (isLoadingPost) {
+    return (
+      <Helmet>
+        <title>読込中 - CAwitter</title>
+      </Helmet>
+    );
+  }
 
   if (post === null) {
     return <NotFoundContainer />;
@@ -31,6 +30,9 @@ const PostContainer = () => {
 
   return (
     <InfiniteScroll fetchMore={fetchMore} items={comments}>
+      <Helmet>
+        <title>{post.user.name} さんのつぶやき - CAwitter</title>
+      </Helmet>
       <PostPage comments={comments} post={post} />
     </InfiniteScroll>
   );

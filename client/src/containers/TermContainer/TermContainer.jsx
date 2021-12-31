@@ -1,15 +1,13 @@
-import { useEffect } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { TermPage } from '../../components/term/TermPage';
 
 /** @type {React.VFC} */
 const TermContainer = () => {
-  useEffect(() => {
-    document.title = '利用規約 - CAwitter';
-  }, [])
-
   return (
     <>
+      <Helmet>
+        <title>利用規約 - CAwitter</title>
+      </Helmet>
       <TermPage />
     </>
   );

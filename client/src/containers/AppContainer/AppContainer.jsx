@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -15,12 +16,14 @@ const NotFoundContainer = lazy(() => import('../NotFoundContainer'))
 /** @type {React.VFC} */
 const AppContainer = () => {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   const [activeUser, setActiveUser] = useState(null);
   const { data, isLoading } = useFetch('/api/v1/me', fetchJSON);
+
   useEffect(() => {
     setActiveUser(data);
   }, [data]);
@@ -30,11 +33,13 @@ const AppContainer = () => {
   const handleRequestOpenPostModal = useCallback(() => setModalType('post'), []);
   const handleRequestCloseModal = useCallback(() => setModalType('none'), []);
 
-  useEffect(() => {
-    if (isLoading) {
-      document.title = '読込中 - CAwitter';
-    }
-  }, [isLoading])
+  if (isLoading) {
+    return (
+      <Helmet>
+        <title>読込中 - CAwitter</title>
+      </Helmet>
+    );
+  }
 
   return (
     <>
