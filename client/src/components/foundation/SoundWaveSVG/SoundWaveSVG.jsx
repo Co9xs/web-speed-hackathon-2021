@@ -8,9 +8,7 @@
  */
 const SoundWaveSVG = ({ soundId }) => {
   return (
-    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 1">
-      <use xlinkHref={`/images/waves/${soundId}.svg`} />
-    </svg>
+    <img style={{ width: '100%', height: '100%' }} src={`/images/waves/${soundId}.svg`} loading="lazy" />
   );
 };
 

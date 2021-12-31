@@ -1,18 +1,4 @@
 /**
- * @param {string} url
- * @returns {Promise<ArrayBuffer>}
- */
-async function fetchBinary(url) {
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/octet-stream'
-    }
-  });
-  return await res.arrayBuffer();
-}
-
-/**
  * @template T
  * @param {string} url
  * @returns {Promise<T>}
@@ -67,4 +53,4 @@ async function sendJSON(url, data) {
   return await res.json();
 }
 
-export { fetchBinary, fetchJSON, sendFile, sendJSON };
+export { fetchJSON, sendFile, sendJSON };
